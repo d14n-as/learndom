@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LEARN DOM : Created ELement</title>
+</head>
+<body>
+
+    <div id="container">
+        <!-- <ul class="list">
+            <li>1. a) Lorem ipsum dolor sit amet consectetur, adipisicing elit.</li>
+            <li>1. b) Lorem ipsum dolor sit amet consectetur, adipisicing elit.</li>
+        </ul> -->
+    </div>
+
+
+    <script>
+
+        let container = document.getElementById('container');
+
+        // Membuat Element dengan createElement
+        let ul = document.createElement('ul');
+        let li1 = document.createElement('li');
+        let li2 = document.createElement('li');
+
+        //menambahkan text pada li
+        li1.appendChild(document.createTextNode('lorem ipsum dolor sit amet'));
+        li2.appendChild(document.createTextNode('lorem ipsum dolor sit amet'));
+
+
+        ul.appendChild(li1); // menambahkan li 1 ke ul
+        ul.appendChild(li2); // menambahkan li 2 ke ul
+        container.appendChild(ul); // menambahkan ul ke container
+
+        
+    </script>
+</body>
+</html>

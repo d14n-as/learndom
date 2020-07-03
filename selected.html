@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LEARN DOM : Selected ELement</title>
+</head>
+<body>
+
+    <div id="container">
+        <ul class="list">
+            <li>1. a) Lorem ipsum dolor sit amet consectetur, adipisicing elit.</li>
+            <li>1. b) Lorem ipsum dolor sit amet consectetur, adipisicing elit.</li>
+        </ul>
+    </div>
+
+    <ul class="list">
+        <li>1. a) Lorem ipsum dolor sit amet consectetur, adipisicing elit.</li>
+        <li>1. b) Lorem ipsum dolor sit amet consectetur, adipisicing elit.</li>
+    </ul>
+
+    <script>
+
+        let body = document.body;
+        let container = document.getElementById('container');
+        let firstList = document.querySelector('.list');
+        let allLists = document.querySelectorAll('.list');
+
+        console.log(firstList);
+        console.log(allLists);
+
+    </script>
+</body>
+</html>

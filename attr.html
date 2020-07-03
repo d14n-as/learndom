@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LEARN DOM : ATTR</title>
+</head>
+<body>
+
+    <div id="container">
+        <!-- <ul class="list">
+            <li>1. a) Lorem ipsum dolor sit amet consectetur, adipisicing elit.</li>
+            <li>1. b) Lorem ipsum dolor sit amet consectetur, adipisicing elit.</li>
+        </ul> -->
+    </div>
+
+
+    <script>
+
+        let container = document.getElementById('container');
+
+        // Membuat Element
+        let ul = document.createElement('ul'); // membuat element ul
+        let li1 = document.createElement('li'); // membuat li 1
+        let li2 = document.createElement('li'); // membuat li 2 
+
+        //menambahkan text pada li
+        li1.appendChild(document.createTextNode('lorem ipsum dolor sit amet'));
+        li2.appendChild(document.createTextNode('lorem ipsum dolor sit amet'));
+
+        ul.appendChild(li1); // menambahkan li 1 ke ul
+        ul.appendChild(li2); // menambahkan li 2 ke ul
+        container.appendChild(ul); // menambahkan ul ke container
+
+        // add attribute
+        ul.id = 'first-id'; //penambahan id pada element UL
+        ul.className = 'list'; //penambahan class pada element Ul
+
+        li1.setAttribute('data-record-id', 1); // menambahkan attribut data-record-id pada li 1
+        li2.setAttribute('data-record-id', 2); // menambahkan attribut data-record-id pada li 2
+
+        let l1RecordId = li1.getAttribute('data-record-id');
+
+        console.log(typeof l1RecordId); // ditambahkan typeof untuk mengetahui tipe datanya  (biasanya html membaca string)
+
+
+        
+    </script>
+</body>
+</html>
