@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LEARN DOM : Manipulating List</title>
+    <style>
+        body { 
+            font-size: 1.4em;
+        }
+        ul {
+            list-style: none;
+        }
+        li {
+            padding: 5px;
+            cursor: pointer;
+        }
+        .active {
+            background-color:#000;
+            color:yellow;
+        }
+        .border {
+            border:1px solid #000;
+        }
+    </style>
+</head>
+<body>
+
+    <div id="container">
+        <ul class="list">
+            <li class="active">1. a) Lorem ipsum dolor sit amet consectetur, adipisicing elit.</li>
+            <li>1. b) Lorem ipsum dolor sit amet consectetur, adipisicing elit.</li>
+        </ul>
+    </div>
+
+
+    <script>
+
+        // Implementasi li
+        let li = document.querySelectorAll('ul.list li');
+
+        // Menambah AddEventListener Click di dalam for. Untuk mengulang setiap klik yang di lakukan pada element li
+        for(let i=0; i<li.length; i++){
+            let element = li[i]; 
+
+            element.addEventListener('click', function(e){
+                deactivated(); // function deactivated ini berfungsi untuk menghapus class active yang lain dari li
+                e.target.classList.add('active'); // Ketika di klik pada li akan menambahkan class active
+            })
+        }
+
+        // fungsi deactivated 
+        function deactivated (){
+
+            let deactivated = document.querySelector('ul.list li.active');
+
+            deactivated.classList.remove('active');
+        }
+
+    </script>
+</body>
+</html>

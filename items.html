@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LEARN DOM : Add Items, Deleted Items</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
+    <style>
+        body { 
+            padding-top:10px;
+            font-size: 1.4em;
+        }
+        ul {
+            list-style: none;
+        }
+        li {
+            padding: 5px;
+            cursor: pointer;
+        }
+        .active {
+            background-color:#000;
+            color:yellow;
+        }
+        .border {
+            border:1px solid #000;
+        }
+    </style>
+</head>
+<body>
+
+    <div id="container">
+        <div class="row">
+            <div class="col-md-6">
+                <ul class="list">
+                    <li class="active">1. a) Lorem ipsum dolor sit amet consectetur, adipisicing elit.</li>
+                    <li>1. b) Lorem ipsum dolor sit amet consectetur, adipisicing elit.</li>
+                </ul>
+            </div>
+            <div class="col-md-6">
+               <div class="row" style="padding-bottom:70px;">
+                   <div class="col">
+                        <button onclick="deleted();">Deleted Item</button>
+                    </div>
+               </div>
+               <div class="row">
+                   <div class="col">
+                        <div class="form-group">
+                            <input type="text" class="form-control" id="new-item">
+                        </div>
+                        <button onclick="addItem();">Add Item</button>
+                    </div>
+               </div>
+            </div>
+        </div>
+      
+    </div>
+
+
+    <script>
+
+        // Implementasi li
+        let li = document.querySelectorAll('ul.list li');
+
+        // function add item
+        function addItem() {
+            let input = document.getElementById('new-item');
+            let value = input.value;
+            let ul = document.querySelector('ul.list');
+
+            let li = document.createElement('li');
+            li.appendChild(document.createTextNode(value));
+
+            
+            li.addEventListener('click', liClickHandler);
+
+            ul.appendChild(li);
+
+            input.value = '';
+        }
+
+
+        // function deleted item
+        function deleted(){
+            let activated = document.querySelector('ul.list li.active');
+
+            activated.remove(); // Semua modern browser supoort Method ini
+
+            // activated.parentNode.removeChild(activated); // cara delete untuk browser lama seperti internet explorer
+        }
+
+
+        // Menambah AddEventListener Click di dalam for Untuk mengulang setiap klik yang di lakukan pada element li
+        for(let i=0; i<li.length; i++){
+            let element = li[i]; 
+
+            element.addEventListener('click', liClickHandler)
+        }
+
+        // function yang menggabungkan function deactivate dan add class active
+        function liClickHandler(e){
+            deactivated(); // function deactivated ini berfungsi untuk menghapus class active yang lain dari li
+            e.target.classList.add('active'); // Ketika di klik pada li akan menambahkan class active
+        }
+
+        // fungsi deactivated (menghilangkan class active)
+        function deactivated (){
+            let activated = document.querySelector('ul.list li.active');
+
+            if(!activated) {
+                return;
+            }
+
+            activated.classList.remove('active');
+        }
+
+    </script>
+</body>
+</html>
