@@ -39,6 +39,8 @@
             <div class="col-md-6">
                <div class="row" style="padding-bottom:70px;">
                    <div class="col">
+                        <button onclick="moveUp();">Move Up</button>
+                        <button onclick="moveDown();">Move Down</button>
                         <button onclick="deleted();">Deleted Item</button>
                     </div>
                </div>
@@ -83,9 +85,54 @@
         function deleted(){
             let activated = document.querySelector('ul.list li.active');
 
+            let sibling = getSibling(activated);
+
+            if(sibling) {
+                sibling.classList.add('active');
+            }
+
             activated.remove(); // Semua modern browser supoort Method ini
 
             // activated.parentNode.removeChild(activated); // cara delete untuk browser lama seperti internet explorer
+        }
+
+        function getPrevSibling(element) {
+            let sibling = element.previousSibling;
+            while (sibling != null) {
+                if(sibling.tagName && sibling.tagName.toLowerCase() ==  'li'){
+                   return sibling;
+                }
+
+                sibling = sibling.previousSibling;  
+            }
+
+            return null;
+        }
+
+
+        function getNextSibling(element) {
+            let sibling = element.nextSibling;
+
+            while (sibling != null) {
+                if(sibling.tagName && sibling.tagName.toLowerCase() ==  'li'){
+                return sibling;
+                }
+
+                sibling = sibling.nextSibling;  
+            }
+
+            return null;
+        }
+
+        // fuction untuk mempertahankan class active di setiap sibling 
+        function getSibling(element) {
+            let sibling = getPrevSibling(element);
+
+            if(sibling) {
+                return sibling;
+            }
+
+            return getNextSibling(element);
         }
 
 
@@ -94,6 +141,38 @@
             let element = li[i]; 
 
             element.addEventListener('click', liClickHandler)
+        }
+        
+        function moveUp() {
+            let activated = document.querySelector('ul.list li.active');
+            let previous = getPrevSibling(activated);
+
+            if(!previous) {
+                return;
+            }
+
+            activated.remove();
+            previous.parentNode.insertBefore(activated, previous);
+
+        }
+
+        function moveDown() {
+            let activated = document.querySelector('ul.list li.active');
+            let sibling = getNextSibling(activated);
+
+            if(!sibling) {
+                return;
+            }
+
+            activated.remove();
+
+            let nextSibling = getNextSibling(sibling);
+
+            if(!nextSibling) {
+                sibling.parentNode.appendChild(activated);
+            } else {
+                nextSibling.parentNode.insertBefore(activated, nextSibling);
+            }
         }
 
         // function yang menggabungkan function deactivate dan add class active

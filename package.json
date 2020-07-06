@@ -4,8 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "serve": "browser-sync start --server --files '[index.html, list.html, created.html,selected.html,style.html,items.html]'"
+    "server": "lite-server"
   },
   "repository": {
     "type": "git",
@@ -16,5 +15,8 @@
   "bugs": {
     "url": "https://github.com/d14n-as/learndom/issues"
   },
-  "homepage": "https://github.com/d14n-as/learndom#readme"
+  "homepage": "https://github.com/d14n-as/learndom#readme",
+  "dependencies": {
+    "lite-server": "^2.5.4"
+  }
 }
